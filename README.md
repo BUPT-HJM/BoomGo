@@ -81,8 +81,9 @@ boom("canvas1","imgs/test1.jpg",argOptions).go(3000);
 ## 感谢
 
 - 感谢@chokcoco与@xxycode带来的灵感和部分代码参考
+- 感谢@kiki9611的建议
+- 参考
 
 >https://github.com/chokcoco/boomJS
 >https://github.com/xxycode/UIViewXXYBoom
-- 感谢@kiki9611的建议
 
