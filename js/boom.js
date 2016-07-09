@@ -1,18 +1,16 @@
 (function(window, undefined) {
 
 	var
+		//默认延时时间
 		delayTime = 0,
-		// 默认竖直速度数组
-		//randomVy = [-50,-40,-30,-10,-20, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5,10,20,30,40,50],
-		// 预设参数
+		//默认参数
 		argOptions = {
-			//小球大小
-			'radius': 10,
-			'minVx': -30,
-			'maxVx': 30,
-			'minVy': -50,
-			'maxVy': 50,
-			'edgeOpacity': false
+			'radius': 10,//小球大小
+			'minVx': -30,//最小水平喷射速度
+			'maxVx': 30,//最大水平喷射速度
+			'minVy': -50,//最小垂直喷射速度
+			'maxVy': 50,//最大垂直喷射速度
+			'edgeOpacity': false//canvas是否边缘羽化
 		},
 		//暴露的最终变量
 		boom = function(canvasID, Src, options) {
@@ -65,6 +63,11 @@
 		return colors;
 	}
 
+	/**
+	 * 根据参数初始化垂直速度Vy数组
+	 * @param  options 参数
+	 * @return randomVy 垂直速度Vy数组
+	 */
 	function initRandomVy(options) {
 		var randomVy = [];
 		for (var i = options.minVy; i <= options.maxVy; i++) {
@@ -180,7 +183,6 @@
 				if (parseInt(reArr[2] < 0.1)) {
 					continue;
 				}
-				//var opacity = parseInt(reArr[2]);
 				if (balls[i].x + options.radius <= canvas.width / 2 && balls[i].y + options.radius <= canvas.height / 2) {
 					opacity = (balls[i].x / canvas.width * 2) * (balls[i].y / canvas.height * 2);
 				} else if (balls[i].x + options.radius >= canvas.width / 2 && balls[i].y + options.radius <= canvas.height / 2) {
@@ -227,7 +229,6 @@
 					//canvas上绘制图片
 					that.ctx = drawImg(img, canvas);
 				}
-			//return this;
 
 		},
 		go: function(delayOption) {
@@ -273,8 +274,6 @@
 
 	// A.prototype.init.prototype指向A.prototype
 	boom.prototype.init.prototype = boom.prototype;
-	//boom.prototype.go.prototype = boom.prototype;
-
 	//暴露变量
 	window.boom = boom;
 })(window)

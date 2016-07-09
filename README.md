@@ -49,7 +49,7 @@ var argOptions = {
     'maxVx': 30,//最大水平喷射速度
     'minVy': -50,//最小垂直喷射速度
     'maxVy': 50,//最大垂直喷射速度
-    'edgeOpacity': false//是否canvas边缘羽化
+    'edgeOpacity': false//canvas是否边缘羽化
 }
 //爆炸go支持延时默认为立即爆炸即go(0)
 ```
