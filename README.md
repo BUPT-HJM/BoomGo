@@ -8,7 +8,7 @@ https://bupt-hjm.github.io/BoomGo/
 
 >因为图片爆炸时有颤动和缩小效果，所以依赖于`boom.css`，当然你也可以自行定义，或者直接不引入略去这些效果，分别是用到了`begin-shake`和`become-small`两个className
 
-### **引入js/css**
+### 引入js/css
 ```
 //可选，可以自定义修改begin-shake和become-small两个className
 <link rel="stylesheet" href="css/boom.css">
@@ -19,7 +19,7 @@ https://bupt-hjm.github.io/BoomGo/
 <script src="js/boom.js"></script>
 ```
 
-### **调用插件**
+### 调用插件
 ```
 //先构造boom实例，加载图片
 //例：
@@ -40,7 +40,7 @@ boom1.go();
 boom("canvas1","imgs/test1.jpg").go();
 ```
 
-### **使用自定义参数**
+### 使用自定义参数
 ```
 //默认参数
 var argOptions = {
