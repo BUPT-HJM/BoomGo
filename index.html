@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<title>boomshakalaka</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/boom.css">
+</head>
+<body>
+	<header>
+		<canvas id="header">
+			当前浏览器不支持Canvas，请更换浏览器后再试
+		</canvas>
+	</header>
+	<div id="container">
+		<canvas id="canvas1">
+			当前浏览器不支持Canvas，请更换浏览器后再试
+		</canvas>
+		<canvas id="canvas2">
+			当前浏览器不支持Canvas，请更换浏览器后再试
+		</canvas>
+		<canvas id="canvas3">
+			当前浏览器不支持Canvas，请更换浏览器后再试
+		</canvas>
+	</div>
+	<footer>
+		<canvas id="boomButton" class="shake">
+			当前浏览器不支持Canvas，请更换浏览器后再试
+		</canvas>
+	</footer>
+	<script src="js/boom.js"></script>
+	<script>
+		var options1 =　{
+			'radius': 4,
+			'minVx': -80,
+			'maxVx': 80
+		}
+		var options2 = {
+			'radius': 2,
+			'minVx': -10,
+			'maxVx': 10,
+			'minVy': -100,
+			'maxVy': 100,
+		}
+		var header = boom("header","imgs/header.png",options1);
+		var boomB = boom("boomButton","imgs/boomButton.png",options2);
+		var boom1 = boom("canvas1","imgs/test1.jpg");
+		var boom2 = boom("canvas2","imgs/test2.jpg");
+		var boom3 = boom("canvas3","imgs/test3.jpg");
+		var boomButton = document.getElementById("boomButton");
+		boomButton.onclick = function() {
+			boomButton.className = "";
+			boom1.go(0);
+			boom2.go(500);
+			boom3.go(1500);
+			header.go(2000);
+			boomB.go(2500);
+		}
+	</script>
+</body>
+</html>

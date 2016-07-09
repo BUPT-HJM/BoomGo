@@ -1,0 +1,36 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#header {
+	display: block;
+	margin: 0 auto;
+	width: 40%;
+}
+
+#container {
+	margin: 0 auto;
+	width: 90%;
+}
+
+#container canvas{
+	width: 33.33333%;
+	float: left;
+}
+
+footer {
+	width: 100%;
+}
+
+#boomButton {
+	display: block;
+	width: 20%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.shake {
+	animation: shake-hard 500ms ease-in-out infinite;
+}
+
