@@ -3,6 +3,7 @@
 
 ## 示例
 https://bupt-hjm.github.io/BoomGo/
+>博客地址：http://bupt-hjm.github.io/2016/07/10/boom/
 
 ## 如何使用
 
@@ -79,11 +80,10 @@ boom("canvas1","imgs/test1.jpg",argOptions).go(3000);
 >//delayOption为延时时间
 
 ## 感谢
-
+>初学canvas，欢迎follow和star，pull request，提出您的宝贵意见
 - 感谢@chokcoco与@xxycode带来的灵感和部分代码参考
 - 感谢@kiki9611的建议
 - 参考
-
->https://github.com/chokcoco/boomJS
->https://github.com/xxycode/UIViewXXYBoom
+ - https://github.com/chokcoco/boomJS
+ - https://github.com/xxycode/UIViewXXYBoom
 
