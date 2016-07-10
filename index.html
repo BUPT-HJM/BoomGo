@@ -24,22 +24,38 @@
 			当前浏览器不支持Canvas，请更换浏览器后再试
 		</canvas>
 	</div>
+	<footer>
+		<canvas id="boomButton" class="shake">
+			当前浏览器不支持Canvas，请更换浏览器后再试
+		</canvas>
+	</footer>
 	<script src="js/boom.js"></script>
 	<script>
-		window.onload = function() {
-			var options1 =　{
-				'radius': 4,
-				'minVx': -80,
-				'maxVx': 80
-			}
-			var header = boom("header","imgs/header.png",options1);
-			var boom1 = boom("canvas1","imgs/test1.jpg");
-			var boom2 = boom("canvas2","imgs/test2.jpg");
-			var boom3 = boom("canvas3","imgs/test3.jpg");
+		var options1 =　{
+			'radius': 4,
+			'minVx': -80,
+			'maxVx': 80
+		}
+		var options2 = {
+			'radius': 2,
+			'minVx': -10,
+			'maxVx': 10,
+			'minVy': -100,
+			'maxVy': 100
+		}
+		var header = boom("header","imgs/header.png",options1);
+		var boomB = boom("boomButton","imgs/boomButton.png",options2);
+		var boom1 = boom("canvas1","imgs/test1.jpg");
+		var boom2 = boom("canvas2","imgs/test2.jpg");
+		var boom3 = boom("canvas3","imgs/test3.jpg");
+		var boomButton = document.getElementById("boomButton");
+		boomButton.onclick = function() {
+			boomButton.className = "";
 			boom1.go(0);
 			boom2.go(1000);
 			boom3.go(2000);
-			header.go(3000);
+			header.go(2500);
+			boomB.go(3000);
 		}
 	</script>
 </body>
