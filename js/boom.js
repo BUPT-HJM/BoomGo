@@ -1,16 +1,22 @@
+/**
+ * @author BUPT-HJM
+ * @name  BoomGo 1.0.0
+ * @description 基于canvas的原生js图片爆炸插件
+
+ */
 (function(window, undefined) {
 
 	var
-		//默认延时时间
+	//默认延时时间
 		delayTime = 0,
 		//默认参数
 		argOptions = {
-			'radius': 10,//小球大小
-			'minVx': -30,//最小水平喷射速度
-			'maxVx': 30,//最大水平喷射速度
-			'minVy': -50,//最小垂直喷射速度
-			'maxVy': 50,//最大垂直喷射速度
-			'edgeOpacity': false//canvas是否边缘羽化
+			'radius': 10, //小球大小
+			'minVx': -30, //最小水平喷射速度
+			'maxVx': 30, //最大水平喷射速度
+			'minVy': -50, //最小垂直喷射速度
+			'maxVy': 50, //最大垂直喷射速度
+			'edgeOpacity': false //canvas是否边缘羽化
 		},
 		//暴露的最终变量
 		boom = function(canvasID, Src, options) {
@@ -168,7 +174,7 @@
 	function updateBalls(canvas, balls, options) {
 		var count = 0;
 		for (var i = 0; i < balls.length; i++) {
-			if (balls[i].x < -options.radius || balls[i].x > canvas.width + options.radius || balls[i].y < -options.radius || balls[i].y > canvas.width + options.radius ) {
+			if (balls[i].x < -options.radius || balls[i].x > canvas.width + options.radius || balls[i].y < -options.radius || balls[i].y > canvas.width + options.radius) {
 				continue;
 			}
 
@@ -226,9 +232,9 @@
 			}
 			img.src = Src;
 			img.onload = function() {
-					//canvas上绘制图片
-					that.ctx = drawImg(img, canvas);
-				}
+				//canvas上绘制图片
+				that.ctx = drawImg(img, canvas);
+			}
 
 		},
 		go: function(delayOption) {
