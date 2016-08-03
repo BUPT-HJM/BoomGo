@@ -79,7 +79,7 @@ var argOptions = {
 //爆炸go支持延时默认为立即爆炸即go(0)
 ```
 
-```
+``` javascript
 //使用自定义参数，可以不写全
 var argOptions = {
     'radius': 10,//小球大小
