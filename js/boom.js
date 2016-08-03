@@ -1,22 +1,25 @@
 /**
  * @author BUPT-HJM
- * @name  BoomGo 1.0.0
+ * @name  BoomGo 1.0.1
  * @description 基于canvas的原生js图片爆炸插件
-
+ * @updateTime 2016/08/03
  */
+
 (function(window, undefined) {
 
 	var
-	//默认延时时间
 		delayTime = 0,
-		//默认参数
+		// 默认竖直速度数组
+		//randomVy = [-50,-40,-30,-10,-20, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5,10,20,30,40,50],
+		// 预设参数
 		argOptions = {
-			'radius': 10, //小球大小
-			'minVx': -30, //最小水平喷射速度
-			'maxVx': 30, //最大水平喷射速度
-			'minVy': -50, //最小垂直喷射速度
-			'maxVy': 50, //最大垂直喷射速度
-			'edgeOpacity': false //canvas是否边缘羽化
+			//小球大小
+			'radius': 10,
+			'minVx': -30,
+			'maxVx': 30,
+			'minVy': -50,
+			'maxVy': 50,
+			'edgeOpacity': false
 		},
 		//暴露的最终变量
 		boom = function(canvasID, Src, options) {
@@ -69,11 +72,6 @@
 		return colors;
 	}
 
-	/**
-	 * 根据参数初始化垂直速度Vy数组
-	 * @param  options 参数
-	 * @return randomVy 垂直速度Vy数组
-	 */
 	function initRandomVy(options) {
 		var randomVy = [];
 		for (var i = options.minVy; i <= options.maxVy; i++) {
@@ -114,7 +112,6 @@
 				balls.push(aBall);
 			}
 		}
-		//console.log(balls[5].color);
 		return balls;
 	}
 
@@ -155,7 +152,7 @@
 
 			ctx.fill();
 
-			if (balls[i].x <= (0 - options.radius) || balls[i].x >= (canvas.width + options.radius) || balls[i].y >= (canvas.height + options.radius) || balls[i].y <= (0 - options.radius)) {
+			if (balls[i].x < (0 - options.radius) || balls[i].x > (canvas.width + options.radius) || balls[i].y > (canvas.height + options.radius) || balls[i].y < (0 - options.radius)) {
 				count++;
 			}
 		}
@@ -165,6 +162,7 @@
 			var CN = that.canvas.className;
 			CN = CN.replace(" begin-shake become-small", "");
 			that.canvas.className = CN;
+			setTimeout(that._callback, 50);
 		}
 	}
 
@@ -189,6 +187,7 @@
 				if (parseInt(reArr[2] < 0.1)) {
 					continue;
 				}
+				//var opacity = parseInt(reArr[2]);
 				if (balls[i].x + options.radius <= canvas.width / 2 && balls[i].y + options.radius <= canvas.height / 2) {
 					opacity = (balls[i].x / canvas.width * 2) * (balls[i].y / canvas.height * 2);
 				} else if (balls[i].x + options.radius >= canvas.width / 2 && balls[i].y + options.radius <= canvas.height / 2) {
@@ -210,15 +209,20 @@
 		init: function(canvasID, Src, options) {
 			var that = this;
 			var len = arguments.length;
-			var canvas = document.getElementById(canvasID);
-			if (canvas == null) {
-				console.error("Canvas is null.Check the canvasID.");
-				return;
+
+			if (typeof this.canvas == 'undefined') {
+				var canvas = document.getElementById(canvasID);
+				if (canvas == null) {
+					console.error("Canvas is null.Check the canvasID.");
+					return;
+				}
+				this.canvas = canvas;
 			}
 			var img = new Image();
-			this.canvas = canvas;
-			this.imgSrc = Src;
-			this.img = img;
+			if (typeof this.img == 'undefined') {
+				this.imgSrc = Src;
+				this.img = img;
+			}
 			this.hasBoom = false;
 			if (typeof arguments[2] !== 'undefined') {
 				for (var key2 in argOptions) {
@@ -230,18 +234,18 @@
 			} else {
 				this.options = argOptions;
 			}
-			img.src = Src;
+			img.src = this.imgSrc;
 			img.onload = function() {
 				//canvas上绘制图片
-				that.ctx = drawImg(img, canvas);
+				that.ctx = drawImg(that.img, that.canvas);
 			}
-
 		},
-		go: function(delayOption) {
+		go: function(delayOption, callback) {
 			var that = this;
 			if (that.hasBoom) {
 				return;
 			}
+			this._callback = callback;
 			var img = new Image();
 			this.img = img;
 			img.src = this.imgSrc;
@@ -280,6 +284,7 @@
 
 	// A.prototype.init.prototype指向A.prototype
 	boom.prototype.init.prototype = boom.prototype;
+
 	//暴露变量
 	window.boom = boom;
 })(window)
