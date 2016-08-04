@@ -2,7 +2,7 @@
  * @author BUPT-HJM
  * @name  BoomGo 1.0.1
  * @description 基于canvas的原生js图片爆炸插件
- * @updateTime 2016/08/03
+ * @updateTime 2016/08/04
  */
 
 (function(window, undefined) {
@@ -239,6 +239,7 @@
 				//canvas上绘制图片
 				that.ctx = drawImg(that.img, that.canvas);
 			}
+			return this;
 		},
 		go: function(delayOption, callback) {
 			var that = this;
@@ -279,6 +280,7 @@
 					}, 500);
 				}, parseInt(that.delayTime));
 			}
+			return this;
 		}
 	}
 
