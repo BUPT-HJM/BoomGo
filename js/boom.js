@@ -172,7 +172,7 @@
 	function updateBalls(canvas, balls, options) {
 		var count = 0;
 		for (var i = 0; i < balls.length; i++) {
-			if (balls[i].x < -options.radius || balls[i].x > canvas.width + options.radius || balls[i].y < -options.radius || balls[i].y > canvas.width + options.radius) {
+			if (balls[i].x < -options.radius || balls[i].x > canvas.width + options.radius || balls[i].y < -options.radius || balls[i].y > canvas.height + options.radius) {
 				continue;
 			}
 
